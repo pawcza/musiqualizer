@@ -1,16 +1,43 @@
+@keyframes rotateConstantly{
+  from {
+    transform: rotate(0)
+  }
+  to {
+    transform: rotate(-1turn)
+  }
+}
+
 .Wrapper {
-  display: flex;
-  position: absolute;
+  animation: rotateConstantly 60s linear infinite;
   z-index: 1;
-  width: 100vw;
-  height: 100vh;
   pointer-events: none;
   align-items: center;
   justify-content: center;
 }
 
 .Data {
-  background: linear-gradient(to bottom, transparent, #222 50px, #222 calc(100% - 50px), transparent);
-  border-radius: 5px;
+  //background: linear-gradient(to bottom, transparent, #222 50px, #222 calc(100% - 50px), transparent);
+  border-radius: 30px;
   flex-grow: 1;
+  position: relative;
+  will-change: scale;
+
+  &:before, &:after {
+    position: absolute;
+    content: '';
+    width: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(black, transparent);
+  }
+
+  //&:after {
+  //  transform: translate(-50%, -50%) scale(5);
+  //  background: radial-gradient(#222, transparent);
+  //  opacity: .05;
+  //  transition: .1s ease-out;
+  //}
 }

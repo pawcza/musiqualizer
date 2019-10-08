@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import css from './Player.module.scss';
 
 import skyHigh from '../../assets/music/sky-high.mp3'
+import yamaha from '../../assets/music/yamaha.mp3'
 import Visualizer from "./Visualizer/Visualizer";
 
 // fix prefixing
@@ -15,7 +16,7 @@ class Player extends Component {
     this.context = new window.AudioContext();
     this.source = this.context.createMediaElementSource(this.player.current);
     this.analyser = this.context.createAnalyser();
-    this.analyser.fftSize = 256;
+    this.analyser.fftSize = 1024;
     this.frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
 
     this.source.connect(this.context.destination);
@@ -43,11 +44,17 @@ class Player extends Component {
         <audio
           controls
           ref={this.player}
+          autoPlay
         >
-          <source src={skyHigh} type="audio/mpeg"/>
+          <source src={yamaha} type="audio/mpeg"/>
               Your browser does not support the audio element.
         </audio>
-        <Visualizer dataArr={this.frequencyData}/>
+        {this.frequencyData &&
+          <Visualizer
+            total={this.analyser.fftSize}
+            dataArr={this.frequencyData}
+          />
+        }
       </>
     );
   }
