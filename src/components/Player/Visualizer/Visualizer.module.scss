@@ -1,0 +1,16 @@
+.Wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.Data {
+  background: linear-gradient(to bottom, transparent, #222 50px, #222 calc(100% - 50px), transparent);
+  border-radius: 5px;
+  flex-grow: 1;
+}
