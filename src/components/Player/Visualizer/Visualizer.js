@@ -4,7 +4,7 @@ import css from './Visualizer.module.scss'
 
 const Visualizer = ({dataArr, total}) => {
   function getAngle(index, total) {
-    return index / total * Math.PI * Math.PI * 2;
+    return index / total * Math.PI * 180 * 180;
   }
 
   function getMaximumRadius() {

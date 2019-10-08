@@ -1,9 +1,9 @@
 @keyframes rotateConstantly{
   from {
-    transform: rotate(0)
+    transform: rotate(0) scale(1)
   }
   to {
-    transform: rotate(-1turn)
+    transform: rotate(-1turn) scale(.5)
   }
 }
 
